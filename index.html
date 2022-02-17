@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Minimalist</title>
+    <link rel="stylesheet" href="./dist/style.css">
+</head>
+<body>
+    <section class="container">
+        <div class="title">
+            <h1>Card Minimalist by Park Luthor</h1>
+        </div>
+        <div class="card-wrapper">
+
+            <!-- Inicio card -->
+            <div class="card">
+                <div class="card-image">
+                    <figure>
+                        <img src="./dist/image.jpg">
+                        <span class="image-left"></span>
+                        <span class="image-right"></span>
+                        <figcaption>
+                            <p><strong>Ver</strong> mais <strong>+</strong></p>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">
+                        <h1>What is Lorem Ipsum?</h1>
+                    </div>
+                    <div class="card-text">
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim card -->
+
+        </div>
+    </section>
+    <script>
+        const image = document.querySelector('img');
+        
+        function getSplitImages()
+        {
+            let largura = image.clientWidth;
+            let altura = image.clientHeight;
+
+            const canvas = document.createElement('canvas');
+            
+            image.onload = function(){
+                const ctx = canvas.getContext('2d')
+                let parts = []
+                
+                const imageLeft = document.querySelector(".image-left");
+                const imageRight = document.querySelector(".image-right");
+
+                let w2 = largura / 2
+                let h2 = altura / 2
+                let i = 0;
+
+                for(i = 0; i < 2; i++)
+                {
+                    let x = (-w2 * i) % (w2 * 2);
+                    let y = (h2 * i) <= h2 ? 0 : -h2;
+
+                    canvas.width = w2;
+                    canvas.height = h2 * 2;
+
+                    ctx.drawImage(image, x, y , w2 * 2, h2 * 2)
+                    
+                    parts.push(canvas.toDataURL())
+                    
+                    imageLeft.style.cssText = `background-image: url('${parts[0]}')`;
+                    imageRight.style.cssText = `background-image: url('${parts[1]}')`;
+
+                }
+            }
+        }
+        
+        getSplitImages()
+    </script>
+</body>
+</html>

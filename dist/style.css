@@ -1,0 +1,147 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.container
+{
+    max-width: 1300px;
+    padding: 0 15px;
+    margin: 0 auto;
+    width: 100%;
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+.title{
+    width: 100%;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.card-wrapper
+{
+    width: 100%;
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.card-wrapper .card
+{
+    max-width: 403px;
+    width: 100%;
+    min-height: 415px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 2px solid rgb(56, 32, 21);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card-wrapper .card .card-body
+{
+    width: 100%;
+    padding: 15px;
+}
+
+.card-wrapper .card .card-body .card-text
+{
+    margin-top: 15px;
+}
+
+.card-wrapper .card .card-image
+{
+    width: 100%;
+    display: flex;
+}
+
+.card-wrapper .card .card-image figure
+{
+    width: 100%;
+    min-height: calc(415px / 2);
+    position: relative;
+    overflow: hidden;
+    background-color: #F0EDEA;
+}
+
+.card-wrapper .card .card-image figure figcaption
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.card-wrapper .card .card-image figure figcaption p
+{
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.card-wrapper .card .card-image figure img
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    opacity: 0;
+}
+
+.card-wrapper .card .card-image figure span
+{
+    width: 50%;
+    position: absolute;
+    height: 100%;
+    z-index: 2; 
+    background-size: cover;
+}
+
+.card-wrapper .card .card-image figure span.image-left
+{
+    left: 0;
+    background-position: left top;
+    background-repeat: no-repeat;
+    transition: all 0.3s ease-in-out;
+}   
+
+.card-wrapper .card .card-image figure span.image-right
+{
+    right: 0;
+    background-position: right top;
+    background-repeat: no-repeat;
+    transition: all 0.3s ease-in-out;
+}
+
+.card-wrapper .card:hover .card-image figure span.image-left
+{
+    transform:translateX(-80px);
+    box-shadow: -3px 0px 8px 2px rgba(0,0,0,.6);
+}
+
+.card-wrapper .card:hover .card-image figure span.image-right
+{
+    transform:translateX(80px);
+    box-shadow: 3px 0px 8px 2px rgba(0,0,0,.6);
+}
+
+.card-wrapper .card:hover .card-image figure figcaption
+{
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+    transition-delay: 0.1s;
+}
